@@ -1,7 +1,7 @@
 export default function Validate() {
     return(
-        <div>
-            
+        <div className="flex flex-col items-center justify-center h-screen text-2xl">
+            s
         </div>
     )
 }

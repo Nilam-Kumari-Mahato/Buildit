@@ -1,7 +1,7 @@
 export default function History() {
     return (
-        <div>
-            
+        <div className="flex flex-col items-center justify-center h-screen text-2xl">
+            History
         </div>
     )
 }
