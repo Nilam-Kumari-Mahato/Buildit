@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ===== CSS VARIABLES ===== */
-:root {
+@theme {
   --primary: #004c6d;
   --accent: #00ced1;
   --text-primary: #f5f5f5;
@@ -15,4 +15,13 @@
 .background{
   background: #004C6D;
   background: linear-gradient(120deg,rgba(9, 93, 94, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 76, 109, 1) 100%);
+}
+
+.glass{
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
 }
