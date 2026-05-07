@@ -11,3 +11,8 @@
   --warning: #f5a623;
   --danger: #ff4d4d;
 }
+
+.background{
+  background: #004C6D;
+  background: linear-gradient(120deg,rgba(9, 93, 94, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 76, 109, 1) 100%);
+}
