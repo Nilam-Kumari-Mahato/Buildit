@@ -1,4 +1,42 @@
-export default function History() {
+import { useState , useEffect, use } from "react"
+import { validateIdea } from "../utils/gemini"
+import { useNavigate } from "react-router-dom"
+import { generateId } from "../utils/generateId"
+
+
+export default function Validate() {
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
+    const [stage, setStage] = useState("")
+    const [loading , setloading] = useState(false)
+    const [error , setError] = useState("")
+
+    const navigate = useNavigate()
+
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+        setError("")
+
+        if(!title.trim()) return setError("Title is required")
+        if(!description.trim()) return setError("Description is required")
+        if(!stage) return setError("Please select a stage")
+
+        try {
+            setloading(true)
+
+            const result =await validateIdea(title , description , stage)
+            const id = generateId()
+
+            console.log(result)
+        }catch(err) {
+            setError("Something went wrong. Please try again.")
+            console.error(err)
+        }finally{
+            setloading(false)
+        }
+
+    }
+
     return (
         <div className="background min-h-screen w-full overflow-hidden">
             {/* ===== HEADER ===== */}
@@ -10,12 +48,15 @@ export default function History() {
             <div>
                 <form 
                 className="flex flex-col justify-center items-center"
+                onSubmit={handleSubmit}
                 >
                     <label className="flex flex-col gap-1 text-[#f5f5f5]">Idea Title 
                         <input 
                             className="h-10 w-80 rounded-xl px-4 border border-[#004c6d] focus:outline-none focus:ring-2 focus:ring-[#00ced1] focus:ring-opacity-50"
                             type="text" 
                             placeholder="Idea Title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
                         />
                     </label>
                     <label className="flex flex-col gap-1 text-[#f5f5f5]">Idea Description 
@@ -23,7 +64,8 @@ export default function History() {
                             className="w-80 h-32 rounded-xl px-4 py-3 border border-[#004c6d] focus:outline-none focus:ring-2 focus:ring-[#00ced1] focus:ring-opacity-50 resize-none align-top"
                             placeholder="Describe your idea ...."
                             rows={5}
-                            
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                         />
                     </label>
 
@@ -36,6 +78,8 @@ export default function History() {
                             focus:outline-none focus:ring-2 focus:ring-[#00ced1]
                             focus:ring-opacity-50 appearance-none cursor-pointer"
                             style={{ background: '#0a0a0f', color: '#f5f5f5' }}
+                            value={stage}
+                            onChange={(e) => setStage(e.target.value)}
                             >
                             <option value="" disabled selected>Select your current stage...</option>
                             <option value="just-an-idea">💡 Just an Idea</option>
