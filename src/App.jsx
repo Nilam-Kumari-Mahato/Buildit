@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/validate" element={<Validate />} />
-        <Route path="/results" element={<Results />} />
+        <Route path="/results/:id" element={<Results />} />
         <Route path="/history" element={<History />} />
       </Routes>
     </BrowserRouter>

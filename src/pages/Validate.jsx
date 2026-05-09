@@ -28,6 +28,30 @@ export default function Validate() {
             const id = generateId()
 
             console.log(result)
+
+            localStorage.setItem(`result_${id}`, JSON.stringify({
+                id,
+                title,
+                stage,
+                date: new Date().toLocaleDateString(),
+                ...result
+            }))
+
+            // Save to history in localStorage
+            const history = JSON.parse(localStorage.getItem('history') || '[]')
+            history.unshift({
+                id,
+                title,
+                date: new Date().toLocaleDateString(),
+                buildItScore: result.buildItScore,
+                riskLevel: result.riskLevel,
+                completed: true
+            })
+            localStorage.setItem('history', JSON.stringify(history))
+
+            // Navigate to results page
+            navigate(`/results/${id}`)
+
         }catch(err) {
             setError("Something went wrong. Please try again.")
             console.error(err)
