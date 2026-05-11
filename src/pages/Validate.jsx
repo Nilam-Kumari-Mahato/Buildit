@@ -10,6 +10,7 @@ export default function Validate() {
     const [stage, setStage] = useState("")
     const [loading , setloading] = useState(false)
     const [error , setError] = useState("")
+    const [result , setResult] = useState(null)
 
     const navigate = useNavigate()
 
@@ -27,7 +28,8 @@ export default function Validate() {
             const result =await validateIdea(title , description , stage)
             const id = generateId()
 
-            console.log(result)
+            setResult(result)
+            
 
             localStorage.setItem(`result_${id}`, JSON.stringify({
                 id,
@@ -50,7 +52,7 @@ export default function Validate() {
             localStorage.setItem('history', JSON.stringify(history))
 
             // Navigate to results page
-            navigate(`/results/${id}`)
+            navigate(`/results/${id}` , {state: {result : result}})
 
         }catch(err) {
             setError("Something went wrong. Please try again.")
@@ -124,7 +126,7 @@ export default function Validate() {
                     </label>
 
                     <button 
-                        className=" mt-4  text-white text-md font-semibold px-6 py-3 rounded-full transition-all duration-300 "
+                        className=" mt-4  text-white text-md font-semibold px-6 py-3 rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
                         style={{background: 'linear-gradient(135deg, #004c6d, #00ced1)'}}
                     >
                         Validate!!
