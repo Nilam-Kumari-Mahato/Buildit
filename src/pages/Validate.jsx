@@ -69,23 +69,23 @@ export default function Validate() {
             </div>
 
             {/* ===== FORM ===== */}
-            <div>
+            <div className="glass md:h-120 md:w-150 bg-black flex items-center justify-center rounded-2xl mt-10 mx-4 md:mx-auto p-2">
                 <form 
-                className="flex flex-col justify-center items-center"
+                className="flex flex-col gap-4 justify-center items-center"
                 onSubmit={handleSubmit}
                 >
-                    <label className="flex flex-col gap-1 text-[#f5f5f5]">Idea Title 
+                    <label className="flex flex-col gap-1 text-sm md:text-lg font-bold text-[#f5f5f5]">Idea Title 
                         <input 
-                            className="h-10 w-80 rounded-xl px-4 border border-[#004c6d] focus:outline-none focus:ring-2 focus:ring-[#00ced1] focus:ring-opacity-50"
+                            className="h-10 w-80 rounded-xl px-4 border border-[#004c6d] focus:outline-none focus:ring-2 focus:ring-[#00ced1] focus:ring-opacity-50 font-light"
                             type="text" 
                             placeholder="Idea Title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
                     </label>
-                    <label className="flex flex-col gap-1 text-[#f5f5f5]">Idea Description 
+                    <label className="flex flex-col gap-1 text-sm md:text-lg font-bold text-[#f5f5f5]">Idea Description 
                          <textarea
-                            className="w-80 h-32 rounded-xl px-4 py-3 border border-[#004c6d] focus:outline-none focus:ring-2 focus:ring-[#00ced1] focus:ring-opacity-50 resize-none align-top"
+                            className="w-80 h-32 rounded-xl px-4 py-3 border border-[#004c6d] focus:outline-none focus:ring-2 focus:ring-[#00ced1] focus:ring-opacity-50 resize-none align-top font-light"
                             placeholder="Describe your idea ...."
                             rows={5}
                             value={description}
@@ -93,14 +93,14 @@ export default function Validate() {
                         />
                     </label>
 
-                    <label className="flex flex-col gap-1 text-[#f5f5f5]">
+                    <label className="flex flex-col gap-1 text-sm md:text-lg font-bold text-[#f5f5f5]">
                         Current Stage
                         {/* Wrapper for custom arrow */}
                         <div className="relative w-80">
                             <select
                             className="w-full rounded-xl px-4 py-3 border border-[#004c6d]
                             focus:outline-none focus:ring-2 focus:ring-[#00ced1]
-                            focus:ring-opacity-50 appearance-none cursor-pointer"
+                            focus:ring-opacity-50 appearance-none cursor-pointer font-light"
                             style={{ background: '#0a0a0f', color: '#f5f5f5' }}
                             value={stage}
                             onChange={(e) => setStage(e.target.value)}
