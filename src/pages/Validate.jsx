@@ -52,7 +52,7 @@ export default function Validate() {
             localStorage.setItem('history', JSON.stringify(history))
 
             // Navigate to results page
-            navigate(`/results/${id}` , {state: {result : result}})
+            navigate(`/results/${id}`)
 
         }catch(err) {
             setError("Something went wrong. Please try again.")
