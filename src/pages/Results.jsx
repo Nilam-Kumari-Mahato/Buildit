@@ -43,11 +43,12 @@ export default function Results() {
       {/* CONTENT */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 pt-28 pb-20">
 
-        <div className="glass w-full m-3 px-4 py-8">
+        {/*Content heading */}
+        <div className="glass w-full px-4 py-8">
             <p className="font-semibold text-m text-[#00ced1] mb-2">Validation Report</p>
             <div className="flex flex-row gap-4 py-2">
                 <p className="md:text-3xl font-bold text-[#f5f5f5] ">{result.title}</p>
-                <span className="flex items-center text-sm font-light text-[#00ced1] bg-[#004c6d] rounded-full pl-2 pr-2">{result.stage}</span>
+                <span className="flex items-center text-sm font-light text-[#00ced1] bg-[#004c6d99] rounded-full pl-2 pr-2">{result.stage}</span>
             </div>
             <p className="text-lg font-semibold text-[#c0c0c0] ">{result.summary.industry}</p>
 
@@ -57,6 +58,21 @@ export default function Results() {
             </div>
 
         </div>
+
+        <section className="m-2 px-4 py-2 flex flex-row gap-10 justify-between">
+            <div >
+                <p className="text-2xl font-bold text-[#f5f5f5] mb-1">StartUp Score: </p>
+                <div className=" flex items-center justify-center h-30 w-30 rounded-full bg-[#004c6d99] md:text-6xl text-[#00ced1] font-bold">
+                {result.buildItScore}
+            </div>
+            </div>
+
+            <div className="glass w-full ">
+
+                <p>{result.summary.targetAudience}</p>
+            </div>
+            
+        </section>
 
         {/* We'll build each section here one by one */}
         <p className="text-white">Report loaded! ID: {id}</p>
