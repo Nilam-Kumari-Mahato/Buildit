@@ -27,7 +27,7 @@ const RiskCard = ({ risks }) => {
             </div>
 
             {/* Risk text */}
-            <p className="text-[#c0c0c0] text-sm leading-relaxed">{risk}</p>
+            <p className="text-[#c0c0c0] text-sm md:text-m leading-relaxed">{risk}</p>
           </div>
         ))}
       </div>

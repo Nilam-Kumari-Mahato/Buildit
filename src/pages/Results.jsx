@@ -63,17 +63,17 @@ export default function Results() {
 
         </div>
 
-        <section className="m-2 px-4 py-2 flex flex-row gap-10 justify-between">
+        <section className="m-2 px-4 py-2 flex flex-row gap-1 md:gap-10 justify-between">
             <div >
                 <p className="text-xl  font-bold text-[#f5f5f5] mb-1">Score: </p>
-                <div className=" flex items-center justify-center h-20 w-20 rounded-full bg-[#004c6d99] md:text-5xl text-[#00ced1] font-bold">
+                <div className=" flex items-center justify-center h-10 w-10 md:h-20 md:w-20 rounded-full bg-[#004c6d99] md:text-5xl text-[#00ced1] font-bold">
                 {result.buildItScore}
                 </div>
             </div>
 
             <div className="glass w-full p-2 flex items-center">
 
-                <p className="text-lg font-semibold text-[#c0c0c0] ">{result.summary.targetAudience}</p>
+                <p className="tyext-sm md:text-lg font-semibold text-[#c0c0c0] ">{result.summary.targetAudience}</p>
             </div>
             
         </section>
@@ -103,8 +103,14 @@ export default function Results() {
         {/* Opportunities of the startup card */}
         <OpportunitiesCard opportunities={result.opportunities} />
 
+        {/* Final verdict */}
+        <div className="glass w-full m-2 px-4 py-4">
+          <p className="md:text-lg font-semibold text-[#00ced1]">Final Verdict</p>
+          <p className="text-sm md:text-m text-[#c0c0c0]">{result.verdict}</p>
+        </div>
+
         {/* We'll build each section here one by one */}
-        <p className="text-white">Report loaded! ID: {id}</p>
+        <p className="text-white w-ful mean-2">Report loaded! ID: {id}</p>
         <pre className="text-white text-xs mt-4">
           {JSON.stringify(result, null, 2)}
         </pre>

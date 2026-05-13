@@ -27,7 +27,7 @@ const OpportunitiesCard = ({ opportunities }) => {
             </div>
 
             {/* Opportunity text */}
-            <p className="text-[#c0c0c0] text-sm leading-relaxed">{opportunity}</p>
+            <p className="text-[#c0c0c0] text-sm md:text-m leading-relaxed">{opportunity}</p>
           </div>
         ))}
       </div>
