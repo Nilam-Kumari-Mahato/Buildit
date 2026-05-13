@@ -1,5 +1,9 @@
 import { useState , useEffect } from "react"
 import { useParams } from "react-router-dom"
+import CategoryScore from "../components/CategoryScore"
+import CompetitionCard from "../components/CompetitionCard"
+import RiskCard from "../components/RiskCard"
+import OpportunitiesCard from "../components/OpportunitiesCard"
 
 export default function Results() {
     const { id } = useParams()
@@ -61,18 +65,43 @@ export default function Results() {
 
         <section className="m-2 px-4 py-2 flex flex-row gap-10 justify-between">
             <div >
-                <p className="text-2xl font-bold text-[#f5f5f5] mb-1">StartUp Score: </p>
-                <div className=" flex items-center justify-center h-30 w-30 rounded-full bg-[#004c6d99] md:text-6xl text-[#00ced1] font-bold">
+                <p className="text-xl  font-bold text-[#f5f5f5] mb-1">Score: </p>
+                <div className=" flex items-center justify-center h-20 w-20 rounded-full bg-[#004c6d99] md:text-5xl text-[#00ced1] font-bold">
                 {result.buildItScore}
-            </div>
+                </div>
             </div>
 
-            <div className="glass w-full ">
+            <div className="glass w-full p-2 flex items-center">
 
-                <p>{result.summary.targetAudience}</p>
+                <p className="text-lg font-semibold text-[#c0c0c0] ">{result.summary.targetAudience}</p>
             </div>
             
         </section>
+        {/* Category Scores Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
+          <CategoryScore label="Market Opportunity" score={result.categoryScores.marketOpportunity} />
+          <CategoryScore label="Competition Level"  score={result.categoryScores.competitionLevel} />
+          <CategoryScore label="Feasibility"        score={result.categoryScores.feasibility} />
+          <CategoryScore label="Monetization"       score={result.categoryScores.monetizationPotential} />
+        </div>
+
+        {/* Competitiors list */}
+        <section className="glass w-full flex flex-col gap-4 m-2 px-3 py-4 ">
+          <p className="text-lg font-semibold text-[#00ced1]">Competitor Ananlysis</p>
+          {result.competitors.map((competitor , index) => (
+            <div 
+              key={index}
+            >
+              <CompetitionCard name={competitor.name} description={competitor.description}/>
+            </div>
+          ))}
+        </section>
+        
+        {/* Risks of the startup card */}
+        <RiskCard risks={result.risks}/>
+        
+        {/* Opportunities of the startup card */}
+        <OpportunitiesCard opportunities={result.opportunities} />
 
         {/* We'll build each section here one by one */}
         <p className="text-white">Report loaded! ID: {id}</p>
