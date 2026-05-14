@@ -4,12 +4,25 @@ import CategoryScore from "../components/CategoryScore"
 import CompetitionCard from "../components/CompetitionCard"
 import RiskCard from "../components/RiskCard"
 import OpportunitiesCard from "../components/OpportunitiesCard"
+import ShareDialog from "../components/ShareDialog"
+import { sharereport } from "../utils/shareReport"
 
 export default function Results() {
     const { id } = useParams()
     const [result , setResult] = useState(null)
     const [loading , setLoading] = useState(true)
     const [error , setError] =useState(null)
+    const [showShare, setShowShare] = useState(false)
+    const [shareUrl, setShareUrl] = useState('')
+
+    const handleShare = async () => {
+    const url = await sharereport(result.title, id)
+    if (url) {
+      // Desktop fallback — show dialog
+      setShareUrl(url)
+        setShowShare(true)
+      }
+    }
 
     useEffect(() =>{
         const saved =localStorage.getItem(`result_${id}`)
@@ -20,7 +33,6 @@ export default function Results() {
             setError("Report not found")
         }
 
-        console.log(saved);
         setLoading(false);
     } , [id])
 
@@ -43,6 +55,13 @@ export default function Results() {
   return (
     <div className="background min-h-screen w-full overflow-hidden">
 
+      {/* Share Dialog */}
+      {showShare && (
+        <ShareDialog
+          url={shareUrl}
+          onClose={() => setShowShare(false)}
+        />
+      )}
 
       {/* CONTENT */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 pt-28 pb-20">
@@ -57,7 +76,11 @@ export default function Results() {
             <p className="text-lg font-semibold text-[#c0c0c0] ">{result.summary.industry}</p>
 
             <div className="mt-3 flex flex-row gap-7 ">
-                <button className=" py-1 px-2 rounded-lg border border-[#c0c0c0] cursor-pointer text-[#f5f5f5]">Share</button>
+                <button 
+                  onClick={handleShare}
+                  className=" py-1 px-2 rounded-lg border border-[#c0c0c0] cursor-pointer text-[#f5f5f5]">
+                    Share
+                </button>
                 <button className=" py-1 px-2 rounded-lg border border-[#c0c0c0] cursor-pointer text-[#f5f5f5]">Download pdf</button>
             </div>
 
@@ -108,12 +131,6 @@ export default function Results() {
           <p className="md:text-lg font-semibold text-[#00ced1]">Final Verdict</p>
           <p className="text-sm md:text-m text-[#c0c0c0]">{result.verdict}</p>
         </div>
-
-        {/* We'll build each section here one by one */}
-        <p className="text-white w-ful mean-2">Report loaded! ID: {id}</p>
-        <pre className="text-white text-xs mt-4">
-          {JSON.stringify(result, null, 2)}
-        </pre>
 
       </div>
     </div>
