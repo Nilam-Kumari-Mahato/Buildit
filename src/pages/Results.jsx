@@ -6,6 +6,7 @@ import RiskCard from "../components/RiskCard"
 import OpportunitiesCard from "../components/OpportunitiesCard"
 import ShareDialog from "../components/ShareDialog"
 import { sharereport } from "../utils/shareReport"
+import { downloadPDF } from '../utils/pdfExports'
 
 export default function Results() {
     const { id } = useParams()
@@ -22,6 +23,10 @@ export default function Results() {
       setShareUrl(url)
         setShowShare(true)
       }
+    }
+
+    const handleDownloadPDF = () => {
+      downloadPDF(result)
     }
 
     useEffect(() =>{
@@ -81,7 +86,10 @@ export default function Results() {
                   className=" py-1 px-2 rounded-lg border border-[#c0c0c0] cursor-pointer text-[#f5f5f5]">
                     Share
                 </button>
-                <button className=" py-1 px-2 rounded-lg border border-[#c0c0c0] cursor-pointer text-[#f5f5f5]">Download pdf</button>
+                <button 
+                  onClick={handleDownloadPDF}
+                  className=" py-1 px-2 rounded-lg border border-[#c0c0c0] cursor-pointer text-[#f5f5f5]">Download pdf
+                </button>
             </div>
 
         </div>
