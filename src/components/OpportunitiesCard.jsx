@@ -4,7 +4,7 @@ const OpportunitiesCard = ({ opportunities }) => {
 
       {/* Header */}
       <div className="flex items-center gap-2">
-        <span className="text-[#4dff68] text-lg">⚠</span>
+        <span className="text-[#4dff68] text-lg">✅</span>
         <p className="text-xs font-semibold tracking-widest text-[#4dff68] uppercase">
           opportunities 
         </p>
