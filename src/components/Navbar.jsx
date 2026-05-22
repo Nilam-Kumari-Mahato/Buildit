@@ -20,7 +20,9 @@ export default function Navbar() {
         <nav 
             className="fixed top-0 left-0 right-0 z-50 bg-primary mt-2 "
         >
-            <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"
+            
+            >
 
                 {/* Logo */}
                 <NavLink to="/" className="flex items-center  gap-2 group">

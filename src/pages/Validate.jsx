@@ -78,7 +78,7 @@ export default function Validate() {
                 >
                     <label className="flex flex-col gap-1 text-sm md:text-lg font-bold text-[#f5f5f5]">Idea Title 
                         <input 
-                            className="h-10 w-80 rounded-xl px-4 border border-[#004c6d] focus:outline-none focus:ring-2 focus:ring-[#00ced1] focus:ring-opacity-50 font-light"
+                            className="h-10 w-68 md:w-80 rounded-xl px-4 border border-[#004c6d] focus:outline-none focus:ring-2 focus:ring-[#00ced1] focus:ring-opacity-50 font-light"
                             type="text" 
                             placeholder="Idea Title"
                             value={title}
@@ -87,7 +87,7 @@ export default function Validate() {
                     </label>
                     <label className="flex flex-col gap-1 text-sm md:text-lg font-bold text-[#f5f5f5]">Idea Description 
                          <textarea
-                            className="w-80 h-32 rounded-xl px-4 py-3 border border-[#004c6d] focus:outline-none focus:ring-2 focus:ring-[#00ced1] focus:ring-opacity-50 resize-none align-top font-light"
+                            className="w-68 md:w-80 h-32 rounded-xl px-4 py-3 border border-[#004c6d] focus:outline-none focus:ring-2 focus:ring-[#00ced1] focus:ring-opacity-50 resize-none align-top font-light"
                             placeholder="Describe your idea ...."
                             rows={5}
                             value={description}
@@ -98,7 +98,7 @@ export default function Validate() {
                     <label className="flex flex-col gap-1 text-sm md:text-lg font-bold text-[#f5f5f5]">
                         Current Stage
                         {/* Wrapper for custom arrow */}
-                        <div className="relative w-80">
+                        <div className="relative w-68 md:w-80">
                             <select
                             className="w-full rounded-xl px-4 py-3 border border-[#004c6d]
                             focus:outline-none focus:ring-2 focus:ring-[#00ced1]
@@ -126,10 +126,11 @@ export default function Validate() {
                     </label>
 
                     <button 
-                        className=" mt-4  text-white text-md font-semibold px-6 py-3 rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className=" mt-4  text-white text-md font-semibold px-6 py-3 rounded-full transition-all duration-300 cursor-pointer hover:scale-105 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
                         style={{background: 'linear-gradient(135deg, #004c6d, #00ced1)'}}
                     >
                         Validate!!
+                        
                     </button>
                 </form>
             </div>
