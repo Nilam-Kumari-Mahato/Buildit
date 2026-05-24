@@ -1,6 +1,6 @@
 const RiskCard = ({ risks }) => {
   return (
-    <div className="glass mt-2 p-4 flex flex-col gap-4">
+    <div className="glass mt-4 p-4 flex flex-col gap-4">
 
       {/* Header */}
       <div className="flex items-center gap-2">

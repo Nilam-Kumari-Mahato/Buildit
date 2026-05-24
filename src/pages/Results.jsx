@@ -94,20 +94,18 @@ export default function Results() {
 
         </div>
 
-        <section className="m-2 px-4 py-2 flex flex-row gap-1 md:gap-10 justify-between">
-            <div >
-                <p className="text-xl  font-bold text-[#f5f5f5] mb-1">Score: </p>
-                <div className=" flex items-center justify-center h-10 w-10 md:h-20 md:w-20 rounded-full bg-[#004c6d99] md:text-5xl text-[#00ced1] font-bold">
-                {result.buildItScore}
-                </div>
+        <section className=" w-full mt-4  flex flex-col md:flex-row gap-5 md:gap-10 items-stretch">
+          <div className="flex flex-row items-center justify-start gap-1 shrink-0">
+            <p className="text-lg font-semibold text-[#c0c0c0]">Score</p>
+            <div className="flex items-center justify-center h-16 w-16 md:h-20 md:w-20 rounded-full bg-[#004c6d99] md:text-5xl text-3xl text-[#00ced1] font-bold">
+              {result.buildItScore}
             </div>
-
-            <div className="glass w-full p-2 flex items-center">
-
-                <p className="tyext-sm md:text-lg font-semibold text-[#c0c0c0] ">{result.summary.targetAudience}</p>
-            </div>
-            
+          </div>
+          <div className="glass flex items-center flex-1 px-4 py-4 ">
+            <p className="text-sm md:text-lg font-semibold text-[#c0c0c0]">{result.summary.targetAudience}</p>
+          </div>
         </section>
+
         {/* Category Scores Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
           <CategoryScore label="Market Opportunity" score={result.categoryScores.marketOpportunity} />
@@ -117,7 +115,7 @@ export default function Results() {
         </div>
 
         {/* Competitiors list */}
-        <section className="glass w-full flex flex-col gap-4 m-2 px-3 py-4 ">
+        <section className="glass w-full mt-4 px-3 py-4 flex flex-col gap-4 ">
           <p className="text-lg font-semibold text-[#00ced1]">Competitor Ananlysis</p>
           {result.competitors.map((competitor , index) => (
             <div 
@@ -135,7 +133,7 @@ export default function Results() {
         <OpportunitiesCard opportunities={result.opportunities} />
 
         {/* Final verdict */}
-        <div className="glass w-full m-2 px-4 py-4">
+        <div className="glass w-full mt-4 px-4 py-4">
           <p className="md:text-lg font-semibold text-[#00ced1]">Final Verdict</p>
           <p className="text-sm md:text-m text-[#c0c0c0]">{result.verdict}</p>
         </div>

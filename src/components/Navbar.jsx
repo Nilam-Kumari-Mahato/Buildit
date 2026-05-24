@@ -18,23 +18,15 @@ export default function Navbar() {
 
     return(
         <nav 
-            className="fixed top-0 left-0 right-0 z-50 bg-primary mt-2 "
+            className="fixed top-0 left-0 right-0 z-50 bg-primary "
+            style={{ backdropFilter: 'blur(12px)', background: 'rgba(0,0,0,0.4)' }}
         >
-            <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"
+            <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between"
             
             >
 
                 {/* Logo */}
                 <NavLink to="/" className="flex items-center  gap-2 group">
-                    {/* logo icon */}
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center"
-                        style={{ background: 'linear-gradient(135deg, #00ced1, #004c6d)'}}
-                    >
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 13L8 3L13 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                            <path d="M5 9H11" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                        </svg>
-                    </div>
                     {/* logo text */}
                     <span className="text-xl font-bold tracking-tight transition-opacity duration-300 group-hover:opacity-80"
                     style={{
